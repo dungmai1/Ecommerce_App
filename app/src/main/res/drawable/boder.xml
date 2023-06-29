@@ -1,0 +1,12 @@
+<!-- border.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <stroke
+        android:width="2dp"
+        android:color="@color/background"
+        /> <!-- Màu sắc và độ dày của viền -->
+    <padding
+        android:bottom="2dp"
+        android:left="2dp"
+        android:right="2dp"
+        android:top="2dp" /> <!-- Khoảng cách giữa viền và nội dung của ImageView -->
+</shape>

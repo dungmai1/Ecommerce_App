@@ -1,0 +1,98 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit Address"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center"
+        />
+    <EditText
+        android:id="@+id/edtNameEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Name"
+        android:minHeight="48dp"
+        />
+
+    <EditText
+        android:id="@+id/edtPhoneEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Phone"
+        android:minHeight="48dp" />
+
+    <EditText
+        android:id="@+id/edtProvinceEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Province"
+        android:minHeight="48dp" />
+
+    <EditText
+        android:id="@+id/edtDistrictEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:hint="District"
+        android:inputType="text"
+        android:minHeight="48dp" />
+
+    <EditText
+        android:id="@+id/edtSubDistrictEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Sub-district/Village"
+        android:inputType="text"
+        android:minHeight="48dp" />
+
+    <EditText
+        android:id="@+id/edtStreetAddressEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Street Address"
+        android:inputType="textPostalAddress"
+        android:minHeight="48dp" />
+    <Button
+        android:id="@+id/btnDeleteAddress"
+        android:layout_width="355dp"
+        android:layout_height="55dp"
+        android:text="Delete Address"
+        android:backgroundTint="#FFFFFF"
+        android:textColor="#ff0000"
+        android:layout_gravity="center"
+        />
+    <Button
+        android:id="@+id/btnSaveEdit"
+        android:layout_width="355dp"
+        android:layout_height="55dp"
+        android:text="Save"
+        android:backgroundTint="@color/background"
+        android:textColor="#fff"
+        android:layout_gravity="center"
+        >
+    </Button>
+    <!-- Other views and elements of the layout -->
+
+</LinearLayout>

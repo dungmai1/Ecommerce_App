@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1005828844830",
+    "firebase_url": "https://ecommercelogin-6d3ed-default-rtdb.firebaseio.com",
+    "project_id": "ecommercelogin-6d3ed",
+    "storage_bucket": "ecommercelogin-6d3ed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1005828844830:android:e93d5d9c76a11f1dc4ad0f",
+        "android_client_info": {
+          "package_name": "com.maidanhdung.ecommerce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1005828844830-l7dq6bmkqjhf28j908vfq9kivu7jomah.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcM1YFy485n_eTmG1PalrtQhwUVcpiPgA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1005828844830-l7dq6bmkqjhf28j908vfq9kivu7jomah.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

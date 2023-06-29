@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Home"
+        android:icon="@drawable/baseline_home_24"
+        android:id="@+id/home"
+        android:background="@color/background" /> <!-- Màu xanh lá cây -->
+    <item android:title="Cart"
+        android:icon="@drawable/baseline_shopping_cart_24"
+        android:id="@+id/cart"
+        android:background="@color/background" /> <!-- Màu xanh lá cây -->
+    <item android:title="MyOrder"
+        android:icon="@drawable/baseline_event_note_24"
+        android:id="@+id/MyOrder"
+        android:background="@color/background" /> <!-- Màu xanh lá cây -->
+    <item android:title="Profile"
+        android:icon="@drawable/baseline_person_24"
+        android:id="@+id/profile"
+        android:background="@color/background" /> <!-- Màu xanh lá cây -->
+</menu>
