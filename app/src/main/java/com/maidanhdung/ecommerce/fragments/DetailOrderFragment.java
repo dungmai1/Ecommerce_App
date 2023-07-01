@@ -179,7 +179,7 @@ public class DetailOrderFragment extends Fragment {
                 public void onCancelled(@NonNull DatabaseError error) {
                 }
             });
-        binding.txtDeliveredAddress.setText("DeliveredAddress: "+DeliveredAddress);
+        binding.txtDeliveredAddress.setText("Delivered Address: "+DeliveredAddress);
         binding.txtTotal.setText(Total);
         binding.txtPaymentMethodOrder.setText("Payment Method: "+ paymentmethod);
         binding.OrderPlaceOrder.setText("Order Place: "+orderPlace);

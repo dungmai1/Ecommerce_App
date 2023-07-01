@@ -63,18 +63,17 @@
         android:hint="Password"
         android:inputType="textPassword"
         android:textColor="#FFFF"
-    app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPhone"
         android:textColorHint="#ffff"/>
-
 
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="311dp"
         android:layout_height="48dp"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="54dp"
         android:backgroundTint="#FFFF"
         android:text="Login"
         android:textColor="#33907C"
@@ -106,4 +105,17 @@
             android:textColor="#FFFF"
             android:textSize="18sp" />
     </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="27dp"
+        android:layout_marginTop="8dp"
+        android:text="Remember me"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
 </androidx.constraintlayout.widget.ConstraintLayout>

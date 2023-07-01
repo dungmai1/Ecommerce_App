@@ -57,7 +57,7 @@ public class MyListOrderAdapter extends RecyclerView.Adapter<MyListOrderAdapter.
         String totalFormat = decimalFormat.format(orders.get(position).getTotal());
         holder.txtTotal.setText("Total: "+ totalFormat+" VNĐ");
         holder.txtOrderPlace.setText(orders.get(position).getOrderPlace());
-        holder.txtProductNumber.setText("Purchased "+String.valueOf(orders.get(position).getNumberProduct())+" item ");
+        holder.txtProductNumber.setText(String.valueOf(orders.get(position).getNumberProduct())+" items");
         Glide.with(holder.imgOrder.getContext())
                 .load(orders.get(position).getImageProduct())
                 .into(holder.imgOrder);

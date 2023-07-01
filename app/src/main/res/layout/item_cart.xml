@@ -30,9 +30,10 @@
                 >
                 <TextView
                     android:id="@+id/txtProductNameCart"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="TextView"
+                    android:layout_marginRight="80dp"
                     android:textSize="18sp"/>
                 <TextView
                     android:id="@+id/txtPriceCart"

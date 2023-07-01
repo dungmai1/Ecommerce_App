@@ -1,11 +1,15 @@
 package com.maidanhdung.ecommerce.fragments;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,11 +18,16 @@ import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.maidanhdung.ecommerce.R;
+import com.maidanhdung.ecommerce.activities.MainActivity;
+import com.maidanhdung.ecommerce.activities.SignIn;
 import com.maidanhdung.ecommerce.adapters.MyAdapter;
 import com.maidanhdung.ecommerce.databinding.FragmentHomeBinding;
 import com.maidanhdung.ecommerce.models.Category;
@@ -83,12 +92,10 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         //View rootView = inflater.inflate(R.layout.fragment_home, container, false);
         View view = binding.getRoot();
-        binding.recyclerview.setHasFixedSize(true);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
-        binding.recyclerview.setLayoutManager(gridLayoutManager);
         imageproducts = new ArrayList<>();
         myAdapter = new MyAdapter(getActivity(), imageproducts);
         binding.recyclerview.setAdapter(myAdapter);
+        setLayoutDefault();
         loaddata();
         searchProducts();
         loadMouse();
@@ -99,7 +106,53 @@ public class HomeFragment extends Fragment {
         loadEarPhone();
         loadGamingChair();
         loadAll();
+        EventClickDensity();
+        EventClickTile();
+        loadSlideShow();
         return view;
+    }
+
+    private void loadSlideShow() {
+
+        ArrayList<SlideModel> slideModelArrayList = new ArrayList<>();
+        slideModelArrayList.add(new SlideModel(R.drawable.slideshow1, ScaleTypes.CENTER_CROP));
+        slideModelArrayList.add(new SlideModel(R.drawable.slideshow2, ScaleTypes.CENTER_CROP));
+        slideModelArrayList.add(new SlideModel(R.drawable.slideshow3, ScaleTypes.CENTER_CROP));
+        slideModelArrayList.add(new SlideModel(R.drawable.slideshow4, ScaleTypes.CENTER_CROP));
+        slideModelArrayList.add(new SlideModel(R.drawable.slideshow5, ScaleTypes.CENTER_CROP));
+        slideModelArrayList.add(new SlideModel(R.drawable.slideshow6, ScaleTypes.CENTER_CROP));
+
+        binding.imageSlider.setImageList(slideModelArrayList);
+
+        binding.imageSlider.startSliding(3000);
+
+    }
+
+    private void setLayoutDefault(){
+        binding.recyclerview.setHasFixedSize(true);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
+        binding.recyclerview.setLayoutManager(gridLayoutManager);
+    }
+    private void EventClickTile() {
+        binding.btnTile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.btnDensity.setImageResource(R.drawable.menuburger);
+                binding.btnTile.setImageResource(R.drawable.grid1);
+                setLayoutDefault();
+            }
+        });
+    }
+
+    private void EventClickDensity() {
+        binding.btnDensity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.btnTile.setImageResource(R.drawable.grid);
+                binding.btnDensity.setImageResource(R.drawable.burger);
+                binding.recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
+            }
+        });
     }
 
     private void searchProducts() {
@@ -151,12 +204,11 @@ public class HomeFragment extends Fragment {
 
     }
     private void loaddata() {
+        binding.txtCategory.setText("All");
         databaseReference = FirebaseDatabase.getInstance().getReference("Products").child("Category");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                // Clear existing categories
-                // Iterate through each category
                 imageproducts.clear();
                 for (DataSnapshot categorySnapshot : snapshot.getChildren()) {
                     for (DataSnapshot productSnapshot : categorySnapshot.getChildren()) {
@@ -186,12 +238,13 @@ public class HomeFragment extends Fragment {
             }
         });
     }
-
-
     private void loadLaptop(){
         binding.btnLaptop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                changecolor();
+                binding.imgLaptop.setSelected(true);
+                binding.txtCategory.setText("Laptop");
                 databaseReference = FirebaseDatabase.getInstance().getReference("Products").child("Category").child("Laptop");
                 databaseReference.addValueEventListener(new ValueEventListener() {
                     @Override
@@ -227,6 +280,9 @@ public class HomeFragment extends Fragment {
         binding.btnMouse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                changecolor();
+                binding.imgMouse.setSelected(true);
+                binding.txtCategory.setText("Mouse");
                 databaseReference = FirebaseDatabase.getInstance().getReference("Products").child("Category").child("Mouse");
                 databaseReference.addValueEventListener(new ValueEventListener() {
                     @Override
@@ -262,6 +318,9 @@ public class HomeFragment extends Fragment {
         binding.btnKeyboard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                changecolor();
+                binding.imgKeyboard.setSelected(true);
+                binding.txtCategory.setText("Keyboard");
                 databaseReference = FirebaseDatabase.getInstance().getReference("Products").child("Category").child("Keyboard");
                 databaseReference.addValueEventListener(new ValueEventListener() {
                     @Override
@@ -297,6 +356,9 @@ public class HomeFragment extends Fragment {
         binding.btnSmartPhone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                changecolor();
+                binding.imgPhone.setSelected(true);
+                binding.txtCategory.setText("SmartPhone");
                 databaseReference = FirebaseDatabase.getInstance().getReference("Products").child("Category").child("SmartPhone");
                 databaseReference.addValueEventListener(new ValueEventListener() {
                     @Override
@@ -332,6 +394,9 @@ public class HomeFragment extends Fragment {
         binding.btnEarPhone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                changecolor();
+                binding.imgEarPhone.setSelected(true);
+                binding.txtCategory.setText("EarPhone");
                 databaseReference = FirebaseDatabase.getInstance().getReference("Products").child("Category").child("EarPhone");
                 databaseReference.addValueEventListener(new ValueEventListener() {
                     @Override
@@ -367,6 +432,9 @@ public class HomeFragment extends Fragment {
         binding.btnAccessory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                changecolor();
+                binding.imgAccessory.setSelected(true);
+                binding.txtCategory.setText("Accessory");
                 databaseReference = FirebaseDatabase.getInstance().getReference("Products").child("Category").child("Accessory");
                 databaseReference.addValueEventListener(new ValueEventListener() {
                     @Override
@@ -402,6 +470,9 @@ public class HomeFragment extends Fragment {
         binding.btnGamingChair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                changecolor();
+                binding.imgGamingChair.setSelected(true);
+                binding.txtCategory.setText("Gaming Chair");
                 databaseReference = FirebaseDatabase.getInstance().getReference("Products").child("Category").child("GamingChair");
                 databaseReference.addValueEventListener(new ValueEventListener() {
                     @Override
@@ -438,8 +509,20 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 loaddata();
+                changecolor();
+                binding.imgAll.setSelected(true);
                 //loadImageCategory();
             }
         });
+    }
+    private void changecolor(){
+        binding.imgLaptop.setSelected(false);
+        binding.imgAll.setSelected(false);
+        binding.imgMouse.setSelected(false);
+        binding.imgGamingChair.setSelected(false);
+        binding.imgKeyboard.setSelected(false);
+        binding.imgEarPhone.setSelected(false);
+        binding.imgAccessory.setSelected(false);
+        binding.imgPhone.setSelected(false);
     }
 }

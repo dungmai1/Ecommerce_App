@@ -257,7 +257,7 @@ public class PaymentFragment extends Fragment {
                 selectedDistrictId = result.getInt("DistrictID");
                 loadApiFee(selectedDistrictId, String.valueOf(selectedWardId));
                 if(address!=null){
-                    binding.txtAddressPayment.setText(address);
+                    binding.txtAddressPayment.setText(address+"/"+selectedDistrictId+"/"+selectedWardId);
                 }else{
                     binding.txtAddressPayment.setText("+ Add Address");
                 }
@@ -350,6 +350,10 @@ public class PaymentFragment extends Fragment {
                     String TotalPaymentFormat = decimalFormat.format(TotalPayment);
                     binding.TotalPayment.setText("Total Amount: "+TotalPaymentFormat+ " VNĐ");
                 } else {
+                    TotalPayment = total;
+                    DecimalFormat decimalFormat = new DecimalFormat("#,###");
+                    String TotalPaymentFormat = decimalFormat.format(TotalPayment);
+                    binding.TotalPayment.setText("Total Amount: "+TotalPaymentFormat+ " VNĐ");
                     // Handle the case when the response is not successful or the response body is null
                     Toast.makeText(getContext(), "Response error", Toast.LENGTH_LONG).show();
                 }

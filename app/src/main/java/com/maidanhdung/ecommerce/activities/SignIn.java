@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -21,6 +22,7 @@ public class SignIn extends AppCompatActivity {
     public static String txtPhone;
     public static String txtPassword;
     public static int phone;
+    String LuuthongtinLogin = "TKMKLogin";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +41,7 @@ public class SignIn extends AppCompatActivity {
                 if(txtPassword.isEmpty()|| txtPhone.isEmpty()){
                     Toast.makeText(SignIn.this, "Pleas enter all fields", Toast.LENGTH_SHORT).show();
                 }else{
+                    SaveInfo();
                     databaseReference = FirebaseDatabase.getInstance().getReference("Users");
                     databaseReference.orderByChild("phoneNumber").equalTo(Integer.parseInt(txtPhone)).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -77,5 +80,29 @@ public class SignIn extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+    private void SaveInfo(){
+        SharedPreferences sharedPreferences = getSharedPreferences(LuuthongtinLogin,MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("phone_number",binding.editTextPhone.getText().toString());
+        editor.putString("Password",binding.editTextPassword.getText().toString());
+        editor.putBoolean("Save",binding.checkBox.isChecked());
+        editor.commit();
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences sharedPreferences = getSharedPreferences(LuuthongtinLogin,MODE_PRIVATE);
+        String phonenumber = sharedPreferences.getString("phone_number","");
+        String pass = sharedPreferences.getString("Password","");
+        boolean save = sharedPreferences.getBoolean("Save",false);
+        if(save==true){
+            txtPhone = phonenumber;
+            phone = Integer.parseInt(phonenumber);
+            txtPassword = pass;
+            Intent intent = new Intent(SignIn.this, Home.class);
+            startActivity(intent);
+            finishAffinity();
+        }
     }
 }

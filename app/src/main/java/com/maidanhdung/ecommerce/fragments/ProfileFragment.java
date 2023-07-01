@@ -1,15 +1,27 @@
 package com.maidanhdung.ecommerce.fragments;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -41,6 +53,8 @@ public class ProfileFragment extends Fragment {
     private static String lastname;
     private static int phone;
     private static int PhoneNumber;
+    private static final int IMAGE_PICKER_REQUEST_CODE = 100;
+
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -74,6 +88,17 @@ public class ProfileFragment extends Fragment {
     }
 
     @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        binding.addImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(intent, IMAGE_PICKER_REQUEST_CODE);
+            }
+        });
+    }
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -84,8 +109,26 @@ public class ProfileFragment extends Fragment {
         EventClickEditProfile();
         EventClickChangethePassword();
         EventClickLogout();
+        //AddImageProfile();
         return view;
     }
+    private void AddImageProfile() {
+
+    }
+    private void saveImage(String uri){
+        SharedPreferences sharedPreferences = requireContext().getSharedPreferences("TKMKLogin", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("Uri",uri);
+        editor.commit();
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Uri uri = data.getData();
+        binding.imgProfile.setImageURI(uri);
+        saveImage(uri.toString());
+    }
+
 
     private void loaddata() {
         String phone = SignIn.txtPhone;
@@ -123,6 +166,10 @@ public class ProfileFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), SignIn.class);
                 startActivity(intent);
                 getActivity().finish();
+                SharedPreferences sharedPreferences = requireContext().getSharedPreferences("TKMKLogin", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.clear(); // Xóa toàn bộ thông tin
+                editor.apply();
             }
         });
     }

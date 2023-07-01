@@ -135,6 +135,8 @@
                 android:layoutDirection="rtl"
                 android:text="MOMO e-wallet "
                 android:textAlignment="textStart"
+                android:drawableEnd="@drawable/momo"
+                android:drawablePadding="15dp"
                 android:textSize="18sp" />
         </RadioGroup>
 

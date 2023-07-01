@@ -6,81 +6,227 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:padding="20dp"
+    android:background="@color/background"
     tools:context=".fragments.ProfileFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <ImageView
-                android:id="@+id/imgProfile"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                tools:src="@drawable/ic_launcher_background" />
+            android:orientation="horizontal"
+            android:padding="5dp">
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center">
-
+                android:orientation="vertical">
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imgProfile"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:shapeAppearanceOverlay="@style/circular"
+                    app:strokeColor="@color/white"
+                    app:strokeWidth="5dp"
+                    android:padding="5dp"
+                    tools:src="@drawable/ic_launcher_background" />
                 <TextView
-                    android:id="@+id/txtNameProfile"
-                    android:layout_width="match_parent"
+                    android:id="@+id/addImage"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:textSize="22sp" />
-
-                <TextView
-                    android:id="@+id/txtPhoneProfile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"
-                    android:textSize="22sp" />
+                    android:text="+ Add Image"
+                    android:layout_gravity="center"
+                    android:textColor="#ffffff"
+                    />
             </LinearLayout>
-        </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="30dp"
+                    android:layout_gravity="center"
+                    >
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp">
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/user"
+                            android:layout_marginRight="16dp"
+                            />
+                        <TextView
+                            android:id="@+id/txtNameProfile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:textColor="#ffffff"
+                            android:text="Ten nguoi dung"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/phonecall"
+                            android:layout_marginRight="16dp"
+                            />
+                        <TextView
+                            android:id="@+id/txtPhoneProfile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:textColor="#ffffff"
+                            android:text="so dien thoai"/>
+                    </LinearLayout>
 
+                </LinearLayout>
+
+        </LinearLayout>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
         <LinearLayout
+            android:layout_marginTop="30dp"
+            android:background="@drawable/linear_background"
+            android:backgroundTint="#F1ECEC"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Account"
+                android:textSize="18sp"
+                android:layout_marginBottom="15dp"
+                android:textStyle="bold"/>
+            <LinearLayout
+                android:background="@drawable/linear_background"
+                android:backgroundTint="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginRight="16dp">
+                <TextView
+                    android:id="@+id/editProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Edit Profile"
+                    android:drawableStart="@drawable/resume"
+                    android:drawablePadding="10dp"
+                    android:layout_marginLeft="15dp"
+                    android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/ChangeThePassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Reset password"
+                    android:drawablePadding="10dp"
+                    android:layout_marginLeft="15dp"
+                    android:drawableStart="@drawable/resetpassword"
+                    android:textSize="20sp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Settings"
+                    android:layout_marginLeft="15dp"
+                    android:drawableStart="@drawable/setting"
+                    android:layout_marginBottom="20dp"
+                    android:drawablePadding="10dp"
+                    android:textSize="20sp" />
+            </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Information"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="15dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+                <LinearLayout
+                    android:background="@drawable/linear_background"
+                    android:backgroundTint="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginRight="16dp">
+                    <TextView
+                        android:id="@+id/Terms"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="15dp"
+                        android:text="Terms &amp; Conditions"
+                        android:drawablePadding="10dp"
+                        android:drawableStart="@drawable/terms"
+                        android:textSize="20sp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="About app version"
+                        android:layout_marginLeft="15dp"
+                        android:drawableStart="@drawable/information"
+                        android:drawablePadding="10dp"
+                        android:layout_marginBottom="20dp"
+                        android:textSize="20sp" />
+                </LinearLayout>
+                <TextView
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Help center"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+                <LinearLayout
+                    android:background="@drawable/linear_background"
+                    android:backgroundTint="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginRight="16dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Feedback and support"
+                        android:layout_marginLeft="15dp"
+                        android:padding="10dp"
+                        android:drawablePadding="10dp"
+                        android:drawableStart="@drawable/feedback"
+                        android:textSize="20sp" />
+                    <TextView
+                        android:id="@+id/Logout"
+                        android:drawableStart="@drawable/logout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:drawablePadding="10dp"
+                        android:padding="10dp"
+                        android:layout_marginBottom="20dp"
+                        android:text="Log out"
+                        android:textSize="18sp" />
+                </LinearLayout>
 
-            <TextView
-                android:id="@+id/editProfile"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Edit Profile"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/ChangeThePassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Change the password"
-                android:textSize="20sp" />
-            <TextView
-                android:id="@+id/Terms"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Terms &amp; Conditions"
-                android:textSize="20sp" />
-            <TextView
-                android:id="@+id/Logout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Logout"
-                android:textSize="20sp" />
+            </LinearLayout>
 
         </LinearLayout>
-
+</ScrollView>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

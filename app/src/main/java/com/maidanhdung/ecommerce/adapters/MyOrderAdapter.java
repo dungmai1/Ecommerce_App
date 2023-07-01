@@ -48,7 +48,7 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.ViewHold
         holder.Quality.setText("Quality: "+String.valueOf(orders.get(position).getQuality()));
         DecimalFormat decimalFormat = new DecimalFormat("#,###");
         String PriceFormat = decimalFormat.format(orders.get(position).getPrice());
-        holder.Price.setText(PriceFormat+" VNĐ");
+        holder.Price.setText(PriceFormat+"₫");
         int quality = orders.get(position).getQuality();
         int price = orders.get(position).getPrice();
         int total = quality*price;

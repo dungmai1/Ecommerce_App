@@ -51,7 +51,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         holder.productname.setText(products.get(position).getProductName());
         DecimalFormat decimalFormat = new DecimalFormat("#,###");
         String priceFormat = decimalFormat.format(products.get(position).getPrice());
-        holder.price.setText("Giá: "+priceFormat+" VNĐ");
+        holder.price.setText(priceFormat+" VNĐ");
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
